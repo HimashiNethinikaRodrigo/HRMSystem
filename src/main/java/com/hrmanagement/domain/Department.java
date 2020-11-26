@@ -3,15 +3,24 @@ package com.hrmanagement.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "department")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EntityScan
-public class Department {
-   String id;
-   String name;
+public class Department implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    int id;
+
+    @Column(name = "NAME")
+    String name;
 
     @Override
     public String toString() {
